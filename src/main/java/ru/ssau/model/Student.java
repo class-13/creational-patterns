@@ -85,7 +85,6 @@ public class Student implements Pupil {
     @Override
     public Student clone() throws CloneNotSupportedException {
         Student clone = (Student) super.clone();
-        clone.fio = this.fio;
         clone.marks = this.marks.clone();
         clone.subjects = this.subjects.clone();
         return clone;

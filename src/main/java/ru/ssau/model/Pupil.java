@@ -12,4 +12,5 @@ public interface Pupil extends Cloneable {
     void setSubject(int index, String subject);
     void add(String subject, int mark);
     int size();
+    Pupil clone() throws CloneNotSupportedException;
 }

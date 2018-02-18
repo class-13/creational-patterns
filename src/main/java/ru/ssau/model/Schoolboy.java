@@ -15,7 +15,8 @@ public class Schoolboy implements Pupil {
             throw new IllegalArgumentException();
         this.fio = fio;
         registers = new Register[subjectsCount];
-        Arrays.fill(registers, new Register("N/A", 0));
+        for (int i = 0; i < registers.length; i++)
+            registers[i] = new Register("N/A", 0);
     }
 
     @Override
@@ -80,12 +81,14 @@ public class Schoolboy implements Pupil {
     @Override
     public Schoolboy clone() throws CloneNotSupportedException {
         Schoolboy clone = (Schoolboy) super.clone();
-        clone.fio = this.fio;
-        clone.registers = registers.clone();
+        clone.registers = this.registers.clone();
+        for (int i = 0; i < this.registers.length; i++)
+            clone.registers[i] = this.registers[i].clone();
         return clone;
     }
 
     private class Register implements Cloneable {
+
         private String subject;
         private int mark;
 
@@ -96,10 +99,7 @@ public class Schoolboy implements Pupil {
 
         @Override
         protected Register clone() throws CloneNotSupportedException {
-            Register clone = (Register) super.clone();
-            clone.subject = this.subject;
-            clone.mark = this.mark;
-            return clone;
+            return (Register) super.clone();
         }
     }
 }
